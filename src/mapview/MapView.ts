@@ -23,9 +23,9 @@ export class MapView extends GameShell {
     mapStartX: number = 50 << 6;
     mapStartZ: number = 50 << 6;
     mapWidth: number = 25 << 6;
-    mapHeight: number = 19 << 6;
+    mapHeight: number = 22 << 6;
     mapOriginX: number = 32 << 6;
-    mapOriginZ: number = 44 << 6;
+    mapOriginZ: number = 41 << 6;
     focusX: number = this.mapStartX - this.mapOriginX;
     focusZ: number = this.mapOriginZ + this.mapHeight - this.mapStartZ;
 
@@ -1807,9 +1807,9 @@ export class MapView extends GameShell {
         this.mapStartX = 50 << 6;
         this.mapStartZ = 50 << 6;
         this.mapWidth = 25 << 6;
-        this.mapHeight = 19 << 6;
+        this.mapHeight = 22 << 6;
         this.mapOriginX = 32 << 6;
-        this.mapOriginZ = 44 << 6;
+        this.mapOriginZ = 41 << 6;
         this.mapArea = 0;
         this.focusX = this.mapStartX - this.mapOriginX;
         this.focusZ = this.mapOriginZ + this.mapHeight - this.mapStartZ;
@@ -1830,9 +1830,9 @@ export class MapView extends GameShell {
         this.mapStartX = 50 << 6;
         this.mapStartZ = 150 << 6;
         this.mapWidth = 25 << 6;
-        this.mapHeight = 19 << 6;
+        this.mapHeight = 22 << 6;
         this.mapOriginX = 32 << 6;
-        this.mapOriginZ = 144 << 6;
+        this.mapOriginZ = 141 << 6;
         this.mapArea = 1;
         this.focusX = this.mapStartX - this.mapOriginX;
         this.focusZ = this.mapOriginZ + this.mapHeight - this.mapStartZ;
@@ -1853,9 +1853,9 @@ export class MapView extends GameShell {
         this.mapStartX = 39 << 6;
         this.mapStartZ = 74 << 6;
         this.mapWidth = 21 << 6;
-        this.mapHeight = 15 << 6;
+        this.mapHeight = 17 << 6;
         this.mapOriginX = 28 << 6;
-        this.mapOriginZ = 65 << 6;
+        this.mapOriginZ = 63 << 6;
         this.mapArea = 2;
         this.focusX = this.mapStartX - this.mapOriginX;
         this.focusZ = this.mapOriginZ + this.mapHeight - this.mapStartZ;
