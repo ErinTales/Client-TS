@@ -2759,12 +2759,12 @@ export class Client extends GameShell {
         x -= 73;
         y -= 75;
 
-        const yaw: number = (this.orbitCameraYaw + this.macroMinimapAngle) & 0x7ff;
+        const yaw: number = (this.orbitCameraYaw/* + this.macroMinimapAngle*/) & 0x7ff;
         let sinYaw: number = Pix3D.sinTable[yaw];
         let cosYaw: number = Pix3D.cosTable[yaw];
 
-        sinYaw = (sinYaw * (this.macroMinimapZoom + 256)) >> 8;
-        cosYaw = (cosYaw * (this.macroMinimapZoom + 256)) >> 8;
+        sinYaw = sinYaw;//(sinYaw * (this.macroMinimapZoom + 256)) >> 8;
+        cosYaw = cosYaw;//(cosYaw * (this.macroMinimapZoom + 256)) >> 8;
 
         const relX: number = (y * sinYaw + x * cosYaw) >> 11;
         const relY: number = (y * cosYaw - x * sinYaw) >> 11;
@@ -4195,7 +4195,7 @@ export class Client extends GameShell {
                 pitch = this.camShakeRan[4] + 128;
             }
 
-            const yaw: number = (this.orbitCameraYaw + this.macroCameraAngle) & 0x7ff;
+            const yaw: number = (this.orbitCameraYaw /*+ this.macroCameraAngle*/) & 0x7ff;
 
             if (this.localPlayer) {
                 this.camFollow(pitch, yaw, this.orbitCameraX, this.getAvH(this.localPlayer.x, this.localPlayer.z, this.minusedlevel) - 50, this.orbitCameraZ, pitch * 3 + 600);
@@ -11312,7 +11312,7 @@ export class Client extends GameShell {
             return;
         }
 
-        const angle: number = (this.orbitCameraYaw + this.macroMinimapAngle) & 0x7ff;
+        const angle: number = (this.orbitCameraYaw /*+ this.macroMinimapAngle*/) & 0x7ff;
         let anchorX: number = ((this.localPlayer.x / 32) | 0) + 48;
         let anchorY: number = 464 - ((this.localPlayer.z / 32) | 0);
 
@@ -11415,13 +11415,13 @@ export class Client extends GameShell {
             return;
         }
 
-        const angle: number = (this.orbitCameraYaw + this.macroMinimapAngle) & 0x7ff;
+        const angle: number = (this.orbitCameraYaw/* + this.macroMinimapAngle*/) & 0x7ff;
 
         let sinAngle: number = Pix3D.sinTable[angle];
         let cosAngle: number = Pix3D.cosTable[angle];
 
-        sinAngle = ((sinAngle * 256) / (this.macroMinimapZoom + 256)) | 0;
-        cosAngle = ((cosAngle * 256) / (this.macroMinimapZoom + 256)) | 0;
+        sinAngle = ((sinAngle * 256) / (/*this.macroMinimapZoom +*/ 256)) | 0;
+        cosAngle = ((cosAngle * 256) / (/*this.macroMinimapZoom +*/ 256)) | 0;
 
         const x: number = (dy * sinAngle + dx * cosAngle) >> 16;
         const y: number = (dy * cosAngle - dx * sinAngle) >> 16;
@@ -11443,13 +11443,13 @@ export class Client extends GameShell {
             return;
         }
 
-        const angle: number = (this.orbitCameraYaw + this.macroMinimapAngle) & 0x7ff;
+        const angle: number = (this.orbitCameraYaw/* + this.macroMinimapAngle*/) & 0x7ff;
 
         let sinAngle: number = Pix3D.sinTable[angle];
         let cosAngle: number = Pix3D.cosTable[angle];
 
-        sinAngle = ((sinAngle * 256) / (this.macroMinimapZoom + 256)) | 0;
-        cosAngle = ((cosAngle * 256) / (this.macroMinimapZoom + 256)) | 0;
+        sinAngle = ((sinAngle * 256) / (/*this.macroMinimapZoom +*/ 256)) | 0;
+        cosAngle = ((cosAngle * 256) / (/*this.macroMinimapZoom +*/ 256)) | 0;
 
         const x: number = (dy * sinAngle + dx * cosAngle) >> 16;
         const y: number = (dy * cosAngle - dx * sinAngle) >> 16;
