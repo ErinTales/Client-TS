@@ -3227,8 +3227,10 @@ export class Client extends GameShell {
             return; // custom
         }
 
-        const orbitX: number = this.localPlayer.x + this.macroCameraX;
-        const orbitZ: number = this.localPlayer.z + this.macroCameraZ;
+        //ErinTales test - commenting out the this.macroCamera bit.
+        const orbitX: number = this.localPlayer.x ;//+ this.macroCameraX;
+        const orbitZ: number = this.localPlayer.z ;//+ this.macroCameraZ;
+        //end test
 
         if (this.orbitCameraX - orbitX < -500 || this.orbitCameraX - orbitX > 500 || this.orbitCameraZ - orbitZ < -500 || this.orbitCameraZ - orbitZ > 500) {
             this.orbitCameraX = orbitX;
