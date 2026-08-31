@@ -3264,6 +3264,7 @@ export class Client extends GameShell {
         }
 
         this.orbitCameraYaw = ((this.orbitCameraYaw + this.orbitCameraYawVelocity / 2) | 0) & 0x7ff;
+        console.log("yaw:", this.orbitCameraYaw, "velocity:", this.orbitCameraYawVelocity);
         this.orbitCameraPitch += (this.orbitCameraPitchVelocity / 2) | 0;
 
         if (this.orbitCameraPitch < 128) {
