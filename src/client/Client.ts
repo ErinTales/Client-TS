@@ -234,16 +234,16 @@ export class Client extends GameShell {
     private routeZ: Int32Array = new Int32Array(4000);
 
     private macroCameraX: number = 0;
-    private macroCameraXModifier: number = 2;
+    private macroCameraXModifier: number = 0;//2;
     private macroCameraZ: number = 0;
-    private macroCameraZModifier: number = 2;
+    private macroCameraZModifier: number = 0;//2;
     private macroCameraAngle: number = 0;
-    private macroCameraAngleModifier: number = 1;
+    private macroCameraAngleModifier: number = 0;//1;
     private macroCameraCycle: number = 0;
     private macroMinimapAngle: number = 0;
-    private macroMinimapAngleModifier: number = 2;
+    private macroMinimapAngleModifier: number = 0;//2;
     private macroMinimapZoom: number = 0;
-    private macroMinimapZoomModifier: number = 1;
+    private macroMinimapZoomModifier: number = 0;//1;
     private macroMinimapCycle: number = 0;
 
     private worldUpdateNum: number = 0;
