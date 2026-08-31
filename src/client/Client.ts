@@ -2363,6 +2363,8 @@ export class Client extends GameShell {
             this.out.p1Enc(ClientProt.IDLE_TIMER);
         }
 
+        //ErinTales test
+        /*
         this.macroCameraCycle++;
         if (this.macroCameraCycle > 500) {
             this.macroCameraCycle = 0;
@@ -2425,7 +2427,8 @@ export class Client extends GameShell {
         }
         if (this.macroMinimapZoom > 10) {
             this.macroMinimapZoomModifier = -1;
-        }
+        }*/
+        //end of test
 
         if (now - this.noTimeoutTimer > 1_000) {
             // nothing sent in the last 1s, keep the client connected
