@@ -234,16 +234,16 @@ export class Client extends GameShell {
     private routeZ: Int32Array = new Int32Array(4000);
 
     private macroCameraX: number = 0;
-    private macroCameraXModifier: number = 2;
+    private macroCameraXModifier: number = 0;//2;
     private macroCameraZ: number = 0;
-    private macroCameraZModifier: number = 2;
+    private macroCameraZModifier: number = 0;//2;
     private macroCameraAngle: number = 0;
-    private macroCameraAngleModifier: number = 1;
+    private macroCameraAngleModifier: number = 0;//1;
     private macroCameraCycle: number = 0;
     private macroMinimapAngle: number = 0;
-    private macroMinimapAngleModifier: number = 2;
+    private macroMinimapAngleModifier: number = 0;//2;
     private macroMinimapZoom: number = 0;
-    private macroMinimapZoomModifier: number = 1;
+    private macroMinimapZoomModifier: number = 0;//1;
     private macroMinimapCycle: number = 0;
 
     private worldUpdateNum: number = 0;
@@ -1826,12 +1826,14 @@ export class Client extends GameShell {
                 this.sceneState = 0;
                 this.waveCount = 0;
 
-                this.macroCameraX = ((Math.random() * 100.0) | 0) - 50;
+                //ErinTales test
+                /*this.macroCameraX = ((Math.random() * 100.0) | 0) - 50;
                 this.macroCameraZ = ((Math.random() * 110.0) | 0) - 55;
                 this.macroCameraAngle = ((Math.random() * 80.0) | 0) - 40;
                 this.macroMinimapAngle = ((Math.random() * 120.0) | 0) - 60;
                 this.macroMinimapZoom = ((Math.random() * 30.0) | 0) - 20;
-                this.orbitCameraYaw = (((Math.random() * 20.0) | 0) - 10) & 0x7ff;
+                this.orbitCameraYaw = (((Math.random() * 20.0) | 0) - 10) & 0x7ff;*/
+                //end test
 
                 this.minimapState = 0;
                 this.minimapLevel = -1;
@@ -2363,6 +2365,8 @@ export class Client extends GameShell {
             this.out.p1Enc(ClientProt.IDLE_TIMER);
         }
 
+        //ErinTales test
+        /*
         this.macroCameraCycle++;
         if (this.macroCameraCycle > 500) {
             this.macroCameraCycle = 0;
@@ -2425,7 +2429,8 @@ export class Client extends GameShell {
         }
         if (this.macroMinimapZoom > 10) {
             this.macroMinimapZoomModifier = -1;
-        }
+        }*/
+        //end of test
 
         if (now - this.noTimeoutTimer > 1_000) {
             // nothing sent in the last 1s, keep the client connected
@@ -2754,12 +2759,12 @@ export class Client extends GameShell {
         x -= 73;
         y -= 75;
 
-        const yaw: number = (this.orbitCameraYaw + this.macroMinimapAngle) & 0x7ff;
+        const yaw: number = (this.orbitCameraYaw/* + this.macroMinimapAngle*/) & 0x7ff;
         let sinYaw: number = Pix3D.sinTable[yaw];
         let cosYaw: number = Pix3D.cosTable[yaw];
 
-        sinYaw = (sinYaw * (this.macroMinimapZoom + 256)) >> 8;
-        cosYaw = (cosYaw * (this.macroMinimapZoom + 256)) >> 8;
+        sinYaw = sinYaw;//(sinYaw * (this.macroMinimapZoom + 256)) >> 8;
+        cosYaw = cosYaw;//(cosYaw * (this.macroMinimapZoom + 256)) >> 8;
 
         const relX: number = (y * sinYaw + x * cosYaw) >> 11;
         const relY: number = (y * cosYaw - x * sinYaw) >> 11;
@@ -3224,8 +3229,10 @@ export class Client extends GameShell {
             return; // custom
         }
 
-        const orbitX: number = this.localPlayer.x + this.macroCameraX;
-        const orbitZ: number = this.localPlayer.z + this.macroCameraZ;
+        //ErinTales test - commenting out the this.macroCamera bit.
+        const orbitX: number = this.localPlayer.x ;//+ this.macroCameraX;
+        const orbitZ: number = this.localPlayer.z ;//+ this.macroCameraZ;
+        //end test
 
         if (this.orbitCameraX - orbitX < -500 || this.orbitCameraX - orbitX > 500 || this.orbitCameraZ - orbitZ < -500 || this.orbitCameraZ - orbitZ > 500) {
             this.orbitCameraX = orbitX;
@@ -4188,7 +4195,7 @@ export class Client extends GameShell {
                 pitch = this.camShakeRan[4] + 128;
             }
 
-            const yaw: number = (this.orbitCameraYaw + this.macroCameraAngle) & 0x7ff;
+            const yaw: number = (this.orbitCameraYaw /*+ this.macroCameraAngle*/) & 0x7ff;
 
             if (this.localPlayer) {
                 this.camFollow(pitch, yaw, this.orbitCameraX, this.getAvH(this.localPlayer.x, this.localPlayer.z, this.minusedlevel) - 50, this.orbitCameraZ, pitch * 3 + 600);
@@ -11305,7 +11312,7 @@ export class Client extends GameShell {
             return;
         }
 
-        const angle: number = (this.orbitCameraYaw + this.macroMinimapAngle) & 0x7ff;
+        const angle: number = (this.orbitCameraYaw /*+ this.macroMinimapAngle*/) & 0x7ff;
         let anchorX: number = ((this.localPlayer.x / 32) | 0) + 48;
         let anchorY: number = 464 - ((this.localPlayer.z / 32) | 0);
 
@@ -11408,13 +11415,13 @@ export class Client extends GameShell {
             return;
         }
 
-        const angle: number = (this.orbitCameraYaw + this.macroMinimapAngle) & 0x7ff;
+        const angle: number = (this.orbitCameraYaw/* + this.macroMinimapAngle*/) & 0x7ff;
 
         let sinAngle: number = Pix3D.sinTable[angle];
         let cosAngle: number = Pix3D.cosTable[angle];
 
-        sinAngle = ((sinAngle * 256) / (this.macroMinimapZoom + 256)) | 0;
-        cosAngle = ((cosAngle * 256) / (this.macroMinimapZoom + 256)) | 0;
+        sinAngle = ((sinAngle * 256) / (/*this.macroMinimapZoom +*/ 256)) | 0;
+        cosAngle = ((cosAngle * 256) / (/*this.macroMinimapZoom +*/ 256)) | 0;
 
         const x: number = (dy * sinAngle + dx * cosAngle) >> 16;
         const y: number = (dy * cosAngle - dx * sinAngle) >> 16;
@@ -11436,13 +11443,13 @@ export class Client extends GameShell {
             return;
         }
 
-        const angle: number = (this.orbitCameraYaw + this.macroMinimapAngle) & 0x7ff;
+        const angle: number = (this.orbitCameraYaw/* + this.macroMinimapAngle*/) & 0x7ff;
 
         let sinAngle: number = Pix3D.sinTable[angle];
         let cosAngle: number = Pix3D.cosTable[angle];
 
-        sinAngle = ((sinAngle * 256) / (this.macroMinimapZoom + 256)) | 0;
-        cosAngle = ((cosAngle * 256) / (this.macroMinimapZoom + 256)) | 0;
+        sinAngle = ((sinAngle * 256) / (/*this.macroMinimapZoom +*/ 256)) | 0;
+        cosAngle = ((cosAngle * 256) / (/*this.macroMinimapZoom +*/ 256)) | 0;
 
         const x: number = (dy * sinAngle + dx * cosAngle) >> 16;
         const y: number = (dy * cosAngle - dx * sinAngle) >> 16;
