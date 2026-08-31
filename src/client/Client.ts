@@ -1255,8 +1255,6 @@ export class Client extends GameShell {
         if (this.errorStarted || this.errorLoading || this.errorHost) {
             return;
         }
-
-        console.log("CLIENT MAINLOOP RUNNING");
         
         Client.loopCycle++;
 
