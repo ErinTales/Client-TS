@@ -1826,12 +1826,14 @@ export class Client extends GameShell {
                 this.sceneState = 0;
                 this.waveCount = 0;
 
-                this.macroCameraX = ((Math.random() * 100.0) | 0) - 50;
+                //ErinTales test
+                /*this.macroCameraX = ((Math.random() * 100.0) | 0) - 50;
                 this.macroCameraZ = ((Math.random() * 110.0) | 0) - 55;
                 this.macroCameraAngle = ((Math.random() * 80.0) | 0) - 40;
                 this.macroMinimapAngle = ((Math.random() * 120.0) | 0) - 60;
                 this.macroMinimapZoom = ((Math.random() * 30.0) | 0) - 20;
-                this.orbitCameraYaw = (((Math.random() * 20.0) | 0) - 10) & 0x7ff;
+                this.orbitCameraYaw = (((Math.random() * 20.0) | 0) - 10) & 0x7ff;*/
+                //end test
 
                 this.minimapState = 0;
                 this.minimapLevel = -1;
